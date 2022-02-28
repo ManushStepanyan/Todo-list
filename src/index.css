@@ -11,3 +11,66 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  font-size: 20px;
+  background-color: rgb(235, 228, 228);
+  border-radius: 6px;
+  margin-top: 5%;
+  padding: 5%;
+  margin-left: 20%;
+  border: 1px solid gray;
+  width: 30%;
+  box-shadow: 1px 2px 3px grey;
+  text-align: center;
+  margin-bottom: 5%;
+}
+
+.add-todos {
+  background-color: rgb(155, 153, 153);
+  display: flex;
+  border-radius: 9px;
+  position: absolute;
+  flex-direction: column;
+  border-radius: 9px;
+  border: 1px solid black;
+  box-shadow: 1px 2px 3px gray;
+  z-index: 1;
+  padding: 1%;
+}
+
+button {
+  border: 1px solid silver;
+  padding: 1%;
+  border-radius: 9px;
+  margin: 2%;
+
+}
+
+input {
+  border-radius: 9px;
+  margin: 1%;
+  padding: 2%;
+}
+
+.todos-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 5%;
+}
+
+.todos-box {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin-bottom: 15%;
+}
+
+.delete-edit {
+  padding: 10%;
+}
+
+.hide-todo {
+  visibility: hidden;
+}

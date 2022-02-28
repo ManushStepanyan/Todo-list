@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useState } from "react";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import ToDoList from "./Components/TodoList";
+import { TodoContext } from "./Context/context";
+import PopupTodos from "./PopupTodos/PopupTodos";
 
 function App() {
+  const context = useContext(TodoContext);
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div>List</div>
+      <div>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {" "}
+                <Link to="/addTodos">
+                  <button>Add Item</button>
+                </Link>
+                <ToDoList />
+              </>
+            }
+          />
+          <Route path="/addTodos" element={<PopupTodos />} />
+        </Routes>
+      </div>
     </div>
   );
 }
