@@ -13,6 +13,8 @@ code {
 }
 
 .container {
+  display: flex;
+  justify-content: space-around;
   font-size: 20px;
   background-color: rgb(235, 228, 228);
   border-radius: 6px;
@@ -20,8 +22,8 @@ code {
   padding: 5%;
   margin-left: 20%;
   border: 1px solid gray;
-  width: 30%;
-  box-shadow: 1px 2px 3px grey;
+  width: 50%;
+  box-shadow: 1px 2px 3px rgb(223, 221, 221);
   text-align: center;
   margin-bottom: 5%;
 }

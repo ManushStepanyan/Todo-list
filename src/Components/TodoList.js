@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext,  useState } from "react";
 import { TodoContext } from "../Context/context";
 
 const ToDoList = () => {
@@ -7,18 +7,15 @@ const ToDoList = () => {
   const [surname, setSurname] = useState("");
   const [age, setAge] = useState("");
   const [index, setIndex] = useState(null);
-  const [todo, setTodo] = useState(context.todoList);
 
-  const handleEdit = (e, id) => {
-    context.todoList.map((item) => {
-      if (item.id === id) {
-        setName(item.name);
-        setSurname(item.surname);
-        setAge(item.age);
-        return true;
-      }
-      return;
-    });
+  const handleEdit = (e, item, id) => {
+    setName(item.name);
+    setSurname(item.surname);
+    setAge(item.age);
+    if (e.target.name === 'update'){
+      context.updateTodo(name, surname, age, id)
+    }
+   
   };
 
   return (
@@ -31,7 +28,6 @@ const ToDoList = () => {
                 <input
                   onChange={(e) => {
                     setName(e.target.value);
-                    if (index === i) item.name = e.target.value;
                   }}
                   value={name}
                 />
@@ -39,7 +35,7 @@ const ToDoList = () => {
                 <input
                   onChange={(e) => {
                     setSurname(e.target.value);
-                    if (index === i) item.surname = e.target.value;
+
                   }}
                   value={surname}
                 />
@@ -47,7 +43,6 @@ const ToDoList = () => {
                 <input
                   onChange={(e) => {
                     setAge(e.target.value);
-                    if (index === i) item.age = e.target.value;
                   }}
                   value={age}
                 />
@@ -71,8 +66,9 @@ const ToDoList = () => {
               <button
                 type="submit"
                 className="delete-edit"
+                name = {index !== null ? 'update' : 'edit' }
                 onClick={(e) => {
-                  handleEdit(e, item.id);
+                  handleEdit(e, item, i);
                   setIndex(index === i ? null : i);
                 }}
               >

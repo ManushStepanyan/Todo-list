@@ -1,9 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
 
 export const TodoContext = createContext();
 
-const todos = [
+export const todos = [
   {
     id: 0,
     name: "Manush",
@@ -14,9 +13,6 @@ const todos = [
 
 function TodoProvider(props) {
   const [todoList, setTodoList] = useState(todos);
-  const [newTodo, setNewTodo] = useState(todos);
-
-  const context = useContext(TodoContext);
 
   const addTodo = (todo) => {
     setTodoList((prevState) => [
@@ -27,14 +23,28 @@ function TodoProvider(props) {
   const removeTodo = (id) => {
     setTodoList(todoList.filter((todo) => todo.id !== id));
   };
+
+  const updateTodo = (newName,newSurname, newAge, id) => {
+    const newTodos = [...todoList];
+    newTodos.forEach((todo,index) => {
+      if(index === id){
+        todo.name = newName;
+        todo.surname = newSurname;
+        todo.age = newAge;
+      }
+    })
+    setTodoList(newTodos);
+  }
+
   return (
     <div>
       <TodoContext.Provider
         value={{
           id: todoList.length - 1,
           todoList: todoList,
-          addTodo: addTodo,
-          removeTodo: removeTodo,
+          addTodo,
+          removeTodo,
+          updateTodo,
         }}
       >
         {props.children}
